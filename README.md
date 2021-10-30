@@ -1,8 +1,7 @@
 # Wallstreet
 
 ## Let's follow the money
-My friend and I always wanted to play around with Wallstreet data and see if we can get some insights, ok as usual started googling for dataset and end up getting from Kaggle. 
-Specifically we wanted understand which stocks were popular among fund managers. 
+My friend and I always wanted to play around with Wallstreet data and see if we can get some insights, ok as usual started googling for dataset and as usual ended up getting from Kaggle. As we all know Kaggle will pretty cleaned up data than real world production scenario. Lets go with this data for now. Specifically we wanted understand which stocks were popular among fund managers. 
 
 ### Total Funds
 After quick clean up and initial data parsing end up with total number of funds, a whopping **23355** funds are available in our dataset.
