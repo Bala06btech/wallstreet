@@ -5,4 +5,5 @@ My friend and I always wanted to play around with Wallstreet data and see if we 
 
 
 ## Resources
+https://www.kaggle.com/stefanoleone992/mutual-funds-and-etfs/
 https://www.nasdaq.com/market-activity/stocks/screener
