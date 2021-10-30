@@ -10,8 +10,9 @@ After quick clean up and initial data parsing end up with total number of funds,
 ### Top 10 Stocks
 Now comes to the initial question which stocks are loved by the all the fund managers irrespective of their fund status. 
 
-![image](https://user-images.githubusercontent.com/19653585/139560399-726c0cb1-263b-4728-b133-808fea7d73ff.png)
+![image](https://user-images.githubusercontent.com/19653585/139560416-5bd07338-ee32-42e4-87de-d99f2830ce6d.png)
 
+Duh !! Looks like familiar names which are mostly familiar among us. 
 
 ## Resources
 https://www.kaggle.com/stefanoleone992/mutual-funds-and-etfs/
