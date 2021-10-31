@@ -29,5 +29,8 @@ Time to focus on Funds and find the successfull funds from them. Time to filter 
 
 ## Resources
 https://www.kaggle.com/stefanoleone992/mutual-funds-and-etfs/
-
 https://www.nasdaq.com/market-activity/stocks/screener
+
+
+## Improvements
+Parsing all stocks and percentage into different columns from "top10_holdings" can be function.
