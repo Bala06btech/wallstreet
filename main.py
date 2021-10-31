@@ -4,7 +4,7 @@ from tabulate import tabulate
 # create source dataframe from raw data
 sourceFundsDf = pd.read_csv('MutualFunds.csv')
 
-# get only required columns for the top 10 stock data process.
+# get only required columns for the top 20 stock data process.
 workSelectDF = sourceFundsDf[['fund_symbol','top10_holdings']]
 
 # split the stocks from one column to 10 columns
@@ -26,14 +26,15 @@ workStockPercentDF.rename({'A0':'StockName', 'A1':'Percent'}, axis='columns',inp
 # Get Total number of distinct funds.
 print("Total Funds ==> " , workStockPercentDF['fund_symbol'].nunique() )
 
-# Get Top 10 stocks from all funds
-Top10StocksDF = workStockPercentDF['StockName'].value_counts().head(10)
-#print("Top 10 Stocks ")
-#print(Top10StocksDF)
-#print(workStockPercentDF['StockName'].value_counts(normalize=True))
-#print(tabulate(workStockPercentCleanDF.head(5)))
+# Get Top 20 stocks from all funds
+Top10StocksDF = workStockPercentDF['StockName'].\
+    value_counts().rename_axis('StockName').\
+    reset_index(name='NoOfPresence').head(20)
 
-#Now get the best fund names.
+# Top 20 stocks (all funds)
+print(tabulate(Top10StocksDF,headers=['Stock Name','No of Presence']))
+
+# Now Let's get the best fund names.
 sizeList = ['Large','Medium']
 workGetBestFundsDF = sourceFundsDf[(sourceFundsDf['inception_date'] < '2010-01-01')].\
     query("rating == 5 and return_rating == 5 and risk_rating == 5").\
@@ -41,11 +42,16 @@ workGetBestFundsDF = sourceFundsDf[(sourceFundsDf['inception_date'] < '2010-01-0
     query('fund_return_ytd > 10.0 and fund_return_1year > 10.0').\
     query('fund_return_3years > 10.0 and fund_return_5years > 10.0'). \
     query('fund_return_10years > 10.0').\
-    query('years_down < 5')
+    query('years_down < 5').\
+    sort_values(by=['fund_return_10years'], ascending=False).head(20)
 
+# Print best performing funds
 BestFundsDF = workGetBestFundsDF [['fund_symbol','fund_extended_name','fund_family']]
-print(tabulate(BestFundsDF))
-workGemStocksDF = pd.concat([workGetBestFundsDF['top10_holdings'].str.split(', ', expand=True).add_prefix('Stocks')], axis=1)
+print(tabulate(BestFundsDF,headers=BestFundsDF.columns))
+
+# Focus on Gem stocks from best funds
+workGemStocksDF = pd.concat([workGetBestFundsDF['top10_holdings'].str.split(', ', expand=True).
+                            add_prefix('Stocks')], axis=1)
 
 workGemStocksPivotDf = (workGemStocksDF.melt(
              var_name='Stock',
@@ -58,17 +64,21 @@ workGemStocksPercentDf = workGemStocksPivotDf['StockNamePercent'].\
 
 workGemStocksPercentDf.rename({'A0':'StockName', 'A1':'Percent'}, axis='columns',inplace=True)
 
-#Remove well known stocks
-TopGemStocksDF = workGemStocksPercentDf['StockName'].drop_duplicates()
-
-#df3 = Top10GemStocksDF.merge(Top10StocksDF, on=['StockName'], how='inner')
+# Get Top 20 stocks from best funds and exclude from our Top20 stock(all) list
+# Remove well known stocks
 print("TopGemStocksDF - But filter out pending")
-#print(TopGemStocksDF)
+TopGemStocksDF = workGemStocksPercentDf['StockName'].\
+    value_counts().rename_axis('StockName').\
+    reset_index(name='NoOfPresence')
+
+TopGemStocksExclDF = TopGemStocksDF[~(TopGemStocksDF['StockName'].isin(Top10StocksDF['StockName']))].head(20)
+
+print(tabulate(TopGemStocksExclDF,headers=['Stock Name','No of Presence']))
+
 
 sourceTickerDf = pd.read_csv('NASDAQ_Ticker_info.csv')
-
 workTickerDf = sourceTickerDf[(sourceTickerDf['Country'] == 'United States')]
 workTickerDf = workTickerDf[['Symbol','Name']]
 workTickerDf['Name'] = workTickerDf['Name'].str.replace(' Common Stock', '')
 
-print(workTickerDf)
+#print(workTickerDf)
