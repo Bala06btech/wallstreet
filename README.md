@@ -22,6 +22,10 @@ Time to focus on Funds and find the successfull funds from them. Time to filter 
 
 ![image](https://user-images.githubusercontent.com/19653585/139565806-1a3cd53f-d02e-4658-976f-b11e663a294b.png)
 
+### Worst Performing Funds
+
+![image](https://user-images.githubusercontent.com/19653585/139591372-d68414db-12e4-4401-bdb7-5bb58bc8a93a.png)
+
 
 ## Resources
 https://www.kaggle.com/stefanoleone992/mutual-funds-and-etfs/
