@@ -16,7 +16,7 @@ Duh !! Looks like familiar names which are mostly familiar among us.
 ### Top Funds
 Time to focus on Funds and find the successfull funds from them. Time to filter out gem of gem from 23000+ available funds. See which ones are successfull over the years and provided to get good return consistently and didn't have so many down years and finally ended up with **27 Funds** 
 
-![image](https://user-images.githubusercontent.com/19653585/139560569-0bb11c38-913e-45ef-9fbf-8aaee185ec01.png)
+![image](https://user-images.githubusercontent.com/19653585/139563909-5844179d-9c0f-4c1b-b10e-dca6de28134e.png)
 
 ## Resources
 https://www.kaggle.com/stefanoleone992/mutual-funds-and-etfs/
