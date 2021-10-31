@@ -18,6 +18,11 @@ Time to focus on Funds and find the successfull funds from them. Time to filter 
 
 ![image](https://user-images.githubusercontent.com/19653585/139563981-1e9b775e-8df8-410a-ad8d-6012d3d72444.png)
 
+### Gem Stocks from Top funds
+
+![image](https://user-images.githubusercontent.com/19653585/139565806-1a3cd53f-d02e-4658-976f-b11e663a294b.png)
+
+
 ## Resources
 https://www.kaggle.com/stefanoleone992/mutual-funds-and-etfs/
 
