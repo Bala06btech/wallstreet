@@ -9,7 +9,7 @@ After quick clean up and initial data parsing end up with total number of funds,
 ### Top 10 Stocks
 Now comes to the initial question which stocks are loved by the all the fund managers irrespective of their fund status. 
 
-![image](https://user-images.githubusercontent.com/19653585/139560416-5bd07338-ee32-42e4-87de-d99f2830ce6d.png)
+![image](https://user-images.githubusercontent.com/19653585/139564095-5159b7bf-0bb6-4112-942d-4315404b0ab8.png)
 
 Duh !! Looks like familiar names which are mostly familiar among us. 
 
