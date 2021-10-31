@@ -33,4 +33,5 @@ https://www.nasdaq.com/market-activity/stocks/screener
 
 
 ## Work In Progress
-Parsing all stocks and percentage into different columns from "top10_holdings" can be function.
+1. Parsing all stocks and percentage into different columns from "top10_holdings" can be function.
+2. Analysing individual stocks 
