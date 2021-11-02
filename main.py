@@ -9,7 +9,7 @@ workSelectDF = sourceFundsDf[['fund_symbol','top10_holdings']]
 
 # split the stocks from one column to 10 columns
 workSplitStocksDF = pd.concat([workSelectDF[['fund_symbol']],
-                               workSelectDF['top10_holdings'].str.split(', ', expand=True).add_prefix('Stocks')], axis=1)
+                               workSelectDF['top10_holdings'].str.split(r'[0-9],', expand=True).add_prefix('Stocks')], axis=1)
 
 # Let's pivot the multiple Stocks column into one
 workPivotStocksDf = (workSplitStocksDF.melt(['fund_symbol'],
@@ -72,9 +72,18 @@ TopGemStocksDF = workGemStocksPercentDf['StockName'].\
     reset_index(name='NoOfPresence')
 
 TopGemStocksExclDF = TopGemStocksDF[~(TopGemStocksDF['StockName'].isin(Top10StocksDF['StockName']))].head(20)
-
 print(tabulate(TopGemStocksExclDF,headers=['Stock Name','No of Presence']))
 
+# Now Let's get the worst performing fund names.
+sizeList = ['Large','Medium']
+workGetWorstFundsDF = sourceFundsDf[(sourceFundsDf['inception_date'] < '2010-01-01')].\
+    query('size_type in @sizeList'). \
+    query('fund_return_10years < 0.0'). \
+    query('fund_return_3years < 0.0 and fund_return_5years < 0.0'). \
+    sort_values(by=['fund_return_10years'], ascending=True)
+
+print(tabulate(workGetWorstFundsDF[['fund_extended_name','fund_return_10years']].head(20),
+               headers=['Stock Name','10 Year Return %']))
 
 sourceTickerDf = pd.read_csv('NASDAQ_Ticker_info.csv')
 workTickerDf = sourceTickerDf[(sourceTickerDf['Country'] == 'United States')]
